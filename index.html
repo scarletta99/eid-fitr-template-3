@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selamat Eid Al-Fitr — Floral Rose</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Ambient background -->
+    <div class="bg-wash"></div>
+    <canvas id="petalCanvas"></canvas>
+    <div class="lantern-wrap" id="lanterns"></div>
+
+    <!-- Audio -->
+    <audio id="bgMusic" loop>
+      <source src="assets/music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- ══════════════════════════════════════
+       COVER — full viewport
+  ═══════════════════════════════════════ -->
+    <section class="cover-section" id="coverSection">
+      <!-- SVG floral border frame -->
+      <div class="cover-frame">
+        <svg class="frame-svg" viewBox="0 0 400 600" preserveAspectRatio="none">
+          <!-- Corner rosettes -->
+          <g opacity="0.55" fill="#bd8294">
+            <!-- TL -->
+            <circle cx="30" cy="30" r="8" />
+            <circle cx="50" cy="20" r="5" />
+            <circle cx="20" cy="50" r="5" />
+            <circle cx="60" cy="35" r="3" />
+            <circle cx="35" cy="60" r="3" />
+            <!-- TR -->
+            <circle cx="370" cy="30" r="8" />
+            <circle cx="350" cy="20" r="5" />
+            <circle cx="380" cy="50" r="5" />
+            <circle cx="340" cy="35" r="3" />
+            <circle cx="365" cy="60" r="3" />
+            <!-- BL -->
+            <circle cx="30" cy="570" r="8" />
+            <circle cx="50" cy="580" r="5" />
+            <circle cx="20" cy="550" r="5" />
+            <circle cx="60" cy="565" r="3" />
+            <circle cx="35" cy="540" r="3" />
+            <!-- BR -->
+            <circle cx="370" cy="570" r="8" />
+            <circle cx="350" cy="580" r="5" />
+            <circle cx="380" cy="550" r="5" />
+            <circle cx="340" cy="565" r="3" />
+            <circle cx="365" cy="540" r="3" />
+          </g>
+          <!-- Border lines -->
+          <rect
+            x="16"
+            y="16"
+            width="368"
+            height="568"
+            rx="12"
+            fill="none"
+            stroke="#bd8294"
+            stroke-width="1"
+            opacity="0.35"
+          />
+          <rect
+            x="22"
+            y="22"
+            width="356"
+            height="556"
+            rx="9"
+            fill="none"
+            stroke="#c8a0b0"
+            stroke-width="0.5"
+            opacity="0.25"
+            stroke-dasharray="6 4"
+          />
+        </svg>
+      </div>
+
+      <!-- Floral sprigs top -->
+      <div class="sprig sprig-top-left">
+        <svg width="130" height="100" viewBox="0 0 130 100">
+          <ellipse
+            cx="30"
+            cy="70"
+            rx="22"
+            ry="14"
+            fill="#bd8294"
+            opacity="0.45"
+            transform="rotate(-30 30 70)"
+          />
+          <ellipse
+            cx="60"
+            cy="50"
+            rx="20"
+            ry="13"
+            fill="#d4a0b4"
+            opacity="0.5"
+            transform="rotate(-10 60 50)"
+          />
+          <ellipse
+            cx="85"
+            cy="40"
+            rx="18"
+            ry="11"
+            fill="#e8c8d4"
+            opacity="0.55"
+            transform="rotate(15 85 40)"
+          />
+          <ellipse
+            cx="105"
+            cy="55"
+            rx="16"
+            ry="10"
+            fill="#bd8294"
+            opacity="0.4"
+            transform="rotate(5 105 55)"
+          />
+          <!-- leaves -->
+          <ellipse
+            cx="45"
+            cy="80"
+            rx="14"
+            ry="6"
+            fill="#8a9060"
+            opacity="0.4"
+            transform="rotate(40 45 80)"
+          />
+          <ellipse
+            cx="75"
+            cy="65"
+            rx="12"
+            ry="5"
+            fill="#9aa070"
+            opacity="0.35"
+            transform="rotate(-20 75 65)"
+          />
+          <ellipse
+            cx="95"
+            cy="72"
+            rx="10"
+            ry="4"
+            fill="#8a9060"
+            opacity="0.35"
+            transform="rotate(60 95 72)"
+          />
+        </svg>
+      </div>
+      <div class="sprig sprig-top-right">
+        <svg width="130" height="100" viewBox="0 0 130 100">
+          <ellipse
+            cx="100"
+            cy="70"
+            rx="22"
+            ry="14"
+            fill="#bd8294"
+            opacity="0.45"
+            transform="rotate(30 100 70)"
+          />
+          <ellipse
+            cx="70"
+            cy="50"
+            rx="20"
+            ry="13"
+            fill="#d4a0b4"
+            opacity="0.5"
+            transform="rotate(10 70 50)"
+          />
+          <ellipse
+            cx="45"
+            cy="40"
+            rx="18"
+            ry="11"
+            fill="#e8c8d4"
+            opacity="0.55"
+            transform="rotate(-15 45 40)"
+          />
+          <ellipse
+            cx="25"
+            cy="55"
+            rx="16"
+            ry="10"
+            fill="#bd8294"
+            opacity="0.4"
+            transform="rotate(-5 25 55)"
+          />
+          <ellipse
+            cx="85"
+            cy="80"
+            rx="14"
+            ry="6"
+            fill="#8a9060"
+            opacity="0.4"
+            transform="rotate(-40 85 80)"
+          />
+          <ellipse
+            cx="55"
+            cy="65"
+            rx="12"
+            ry="5"
+            fill="#9aa070"
+            opacity="0.35"
+            transform="rotate(20 55 65)"
+          />
+          <ellipse
+            cx="35"
+            cy="72"
+            rx="10"
+            ry="4"
+            fill="#8a9060"
+            opacity="0.35"
+            transform="rotate(-60 35 72)"
+          />
+        </svg>
+      </div>
+      <div class="sprig sprig-bottom-left">
+        <svg width="130" height="100" viewBox="0 0 130 100">
+          <ellipse
+            cx="30"
+            cy="30"
+            rx="22"
+            ry="14"
+            fill="#e8c8d4"
+            opacity="0.5"
+            transform="rotate(30 30 30)"
+          />
+          <ellipse
+            cx="65"
+            cy="45"
+            rx="20"
+            ry="13"
+            fill="#bd8294"
+            opacity="0.45"
+            transform="rotate(10 65 45)"
+          />
+          <ellipse
+            cx="95"
+            cy="35"
+            rx="18"
+            ry="11"
+            fill="#d4a0b4"
+            opacity="0.5"
+            transform="rotate(-15 95 35)"
+          />
+          <ellipse
+            cx="45"
+            cy="20"
+            rx="14"
+            ry="6"
+            fill="#8a9060"
+            opacity="0.4"
+            transform="rotate(-40 45 20)"
+          />
+          <ellipse
+            cx="75"
+            cy="20"
+            rx="12"
+            ry="5"
+            fill="#9aa070"
+            opacity="0.35"
+            transform="rotate(20 75 20)"
+          />
+        </svg>
+      </div>
+      <div class="sprig sprig-bottom-right">
+        <svg width="130" height="100" viewBox="0 0 130 100">
+          <ellipse
+            cx="100"
+            cy="30"
+            rx="22"
+            ry="14"
+            fill="#e8c8d4"
+            opacity="0.5"
+            transform="rotate(-30 100 30)"
+          />
+          <ellipse
+            cx="65"
+            cy="45"
+            rx="20"
+            ry="13"
+            fill="#bd8294"
+            opacity="0.45"
+            transform="rotate(-10 65 45)"
+          />
+          <ellipse
+            cx="35"
+            cy="35"
+            rx="18"
+            ry="11"
+            fill="#d4a0b4"
+            opacity="0.5"
+            transform="rotate(15 35 35)"
+          />
+          <ellipse
+            cx="85"
+            cy="20"
+            rx="14"
+            ry="6"
+            fill="#8a9060"
+            opacity="0.4"
+            transform="rotate(40 85 20)"
+          />
+          <ellipse
+            cx="55"
+            cy="20"
+            rx="12"
+            ry="5"
+            fill="#9aa070"
+            opacity="0.35"
+            transform="rotate(-20 55 20)"
+          />
+        </svg>
+      </div>
+
+      <!-- Content -->
+      <div class="cover-content">
+        <div class="cover-crescent">
+          <svg width="56" height="56" viewBox="0 0 80 80" fill="none">
+            <path
+              d="M50 38C50 29 44.5 22 37 19.4C44.5 17 50 10 50 1
+                   C56 7 59 14.5 59 22.5C59 30.5 56 38 50 44
+                   C44 50 36 53 28 53C20 53 12 50 6 44
+                   C17 44 27 41.5 32.5 36C38 30.5 39 20 39 11.5
+                   C45 17.5 50 28 50 38Z"
+              fill="url(#pcg)"
+            />
+            <polygon
+              points="58,6 59.2,10 63.4,10 60.1,12.6 61.3,16.6 58,14 54.7,16.6 55.9,12.6 52.6,10 56.8,10"
+              fill="#e8c8d4"
+              opacity="0.9"
+            />
+            <defs>
+              <linearGradient id="pcg" x1="0" y1="0" x2="80" y2="80">
+                <stop offset="0%" stop-color="#e8c8d4" />
+                <stop offset="100%" stop-color="#bd8294" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <p class="cover-arabic-top">بسم الله الرحمن الرحيم</p>
+
+        <h1 class="cover-arabic-main">عيد الفطر المبارك</h1>
+        <p class="cover-arabic-sub">تقبّل الله منا ومنكم صالح الأعمال</p>
+
+        <div class="cover-divider">
+          <span class="div-line"></span>
+          <span class="div-flower">✾</span>
+          <span class="div-flower">✾</span>
+          <span class="div-flower">✾</span>
+          <span class="div-line"></span>
+        </div>
+
+        <h2 class="cover-title">Selamat Eid Al-Fitr</h2>
+        <p class="cover-year">1 Syawal 1446 H</p>
+
+        <button class="open-btn" onclick="openCard()">
+          <span class="btn-inner">Buka Kartu &nbsp;↓</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+       INNER CARD — revealed on open
+  ═══════════════════════════════════════ -->
+    <section class="card-section" id="cardSection">
+      <!-- Top floral banner -->
+      <div class="card-floral-banner">
+        <svg viewBox="0 0 900 80" preserveAspectRatio="xMidYMid slice">
+          <!-- Wave shape -->
+          <path
+            d="M0,80 Q225,10 450,50 Q675,90 900,20 L900,0 L0,0 Z"
+            fill="#f0e0e8"
+            opacity="0.7"
+          />
+          <path
+            d="M0,80 Q225,30 450,60 Q675,80 900,40 L900,0 L0,0 Z"
+            fill="#e8d0dc"
+            opacity="0.4"
+          />
+          <!-- Scattered flowers -->
+          <g fill="#bd8294" opacity="0.5">
+            <circle cx="80" cy="30" r="6" />
+            <circle cx="100" cy="18" r="4" />
+            <circle cx="65" cy="18" r="4" />
+            <circle cx="240" cy="40" r="6" />
+            <circle cx="260" cy="28" r="4" />
+            <circle cx="225" cy="28" r="4" />
+            <circle cx="450" cy="25" r="7" />
+            <circle cx="472" cy="14" r="4" />
+            <circle cx="428" cy="14" r="4" />
+            <circle cx="660" cy="38" r="6" />
+            <circle cx="680" cy="26" r="4" />
+            <circle cx="645" cy="26" r="4" />
+            <circle cx="820" cy="28" r="6" />
+            <circle cx="840" cy="16" r="4" />
+            <circle cx="805" cy="16" r="4" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- ── Photo block ── -->
+      <div class="photo-block">
+        <div class="photo-frame-wrap">
+          <!-- Ornate SVG frame around photo -->
+          <svg class="photo-ornate-frame" viewBox="0 0 360 440" fill="none">
+            <!-- Outer frame -->
+            <rect
+              x="4"
+              y="4"
+              width="352"
+              height="432"
+              rx="10"
+              stroke="#bd8294"
+              stroke-width="1.5"
+              opacity="0.5"
+            />
+            <!-- Inner double line -->
+            <rect
+              x="12"
+              y="12"
+              width="336"
+              height="416"
+              rx="7"
+              stroke="#c8a0b0"
+              stroke-width="0.8"
+              opacity="0.35"
+              stroke-dasharray="5 3"
+            />
+            <!-- Corner flowers -->
+            <g fill="#bd8294" opacity="0.6">
+              <circle cx="20" cy="20" r="7" />
+              <circle cx="34" cy="12" r="4" />
+              <circle cx="12" cy="34" r="4" />
+              <circle cx="340" cy="20" r="7" />
+              <circle cx="326" cy="12" r="4" />
+              <circle cx="348" cy="34" r="4" />
+              <circle cx="20" cy="420" r="7" />
+              <circle cx="34" cy="428" r="4" />
+              <circle cx="12" cy="406" r="4" />
+              <circle cx="340" cy="420" r="7" />
+              <circle cx="326" cy="428" r="4" />
+              <circle cx="348" cy="406" r="4" />
+            </g>
+            <!-- Mid side accents -->
+            <g fill="#d4a0b4" opacity="0.45">
+              <circle cx="180" cy="8" r="5" />
+              <circle cx="165" cy="5" r="3" />
+              <circle cx="195" cy="5" r="3" />
+              <circle cx="180" cy="432" r="5" />
+              <circle cx="165" cy="435" r="3" />
+              <circle cx="195" cy="435" r="3" />
+              <circle cx="8" cy="220" r="5" />
+              <circle cx="5" cy="205" r="3" />
+              <circle cx="5" cy="235" r="3" />
+              <circle cx="352" cy="220" r="5" />
+              <circle cx="355" cy="205" r="3" />
+              <circle cx="355" cy="235" r="3" />
+            </g>
+          </svg>
+
+          <!--
+          HARDCODE: Ganti src dengan foto keluarga
+        -->
+          <img id="familyPhoto" src="assets/photo.jpg" alt="Foto Keluarga" />
+        </div>
+
+        <!--
+        HARDCODE: Ganti nama keluarga
+      -->
+        <div class="photo-caption">
+          <span class="photo-name">Keluarga Anda</span>
+          <span class="photo-sub">Eid Al-Fitr 1446 H &nbsp;·&nbsp; 2025</span>
+        </div>
+      </div>
+
+      <!-- ── Divider ── -->
+      <div class="section-divider">
+        <span class="sdiv-line"></span>
+        <svg width="40" height="40" viewBox="0 0 40 40">
+          <circle cx="20" cy="20" r="7" fill="#bd8294" opacity="0.6" />
+          <circle cx="20" cy="20" r="4" fill="#e8c8d4" />
+          <circle cx="8" cy="20" r="3" fill="#d4a0b4" opacity="0.5" />
+          <circle cx="32" cy="20" r="3" fill="#d4a0b4" opacity="0.5" />
+          <circle cx="20" cy="8" r="3" fill="#d4a0b4" opacity="0.5" />
+          <circle cx="20" cy="32" r="3" fill="#d4a0b4" opacity="0.5" />
+        </svg>
+        <span class="sdiv-line"></span>
+      </div>
+
+      <!-- ── Message block ── -->
+      <div class="message-block">
+        <div class="msg-arabic-top">عيد مبارك</div>
+
+        <h3 class="msg-title">Selamat Eid Al-Fitr</h3>
+        <p class="msg-subtitle">Minal 'Aidin wal Faizin</p>
+
+        <!--
+        HARDCODE: Ganti isi pesan
+      -->
+        <div class="msg-text">
+          <p>
+            Dengan penuh kerendahan hati kami mengucapkan<br />
+            <em>Mohon Maaf Lahir dan Batin.</em>
+          </p>
+          <p>
+            Semoga di hari yang fitri ini, kita semua kembali suci, dipenuhi
+            rahmat, berkah, dan kasih sayang Allah SWT.
+          </p>
+          <p>
+            Selamat merayakan Idul Fitri bersama<br />
+            orang-orang yang paling kita cintai. 🌸
+          </p>
+        </div>
+
+        <!--
+        HARDCODE: Ganti nama pengirim
+      -->
+        <div class="msg-from">
+          <span class="from-ornament">✾</span>
+          <div>
+            <span class="from-label">Dengan cinta, dari</span>
+            <span class="from-name">Keluarga Anda</span>
+          </div>
+          <span class="from-ornament">✾</span>
+        </div>
+      </div>
+
+      <!-- ── Music Player ── -->
+      <div class="music-block">
+        <div class="music-player">
+          <button class="play-btn" onclick="toggleMusic()">
+            <span class="play-icon" id="playIcon">▶</span>
+          </button>
+          <div class="song-info">
+            <!-- HARDCODE: Ganti judul & artis -->
+            <div class="song-title">Takbiran Eid Al-Fitr</div>
+            <div class="song-subtitle">Allahu Akbar · Allahu Akbar</div>
+          </div>
+          <div class="bars" id="bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom floral banner -->
+      <div class="card-floral-footer">
+        <svg viewBox="0 0 900 70" preserveAspectRatio="xMidYMid slice">
+          <path
+            d="M0,0 Q225,70 450,30 Q675,-10 900,50 L900,70 L0,70 Z"
+            fill="#f0e0e8"
+            opacity="0.6"
+          />
+          <g fill="#bd8294" opacity="0.45">
+            <circle cx="120" cy="50" r="5" />
+            <circle cx="138" cy="60" r="3" />
+            <circle cx="105" cy="60" r="3" />
+            <circle cx="350" cy="40" r="6" />
+            <circle cx="368" cy="52" r="3" />
+            <circle cx="335" cy="52" r="3" />
+            <circle cx="550" cy="55" r="5" />
+            <circle cx="568" cy="65" r="3" />
+            <circle cx="535" cy="65" r="3" />
+            <circle cx="760" cy="44" r="6" />
+            <circle cx="778" cy="56" r="3" />
+            <circle cx="745" cy="56" r="3" />
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
